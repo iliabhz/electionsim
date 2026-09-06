@@ -43,18 +43,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               >
                 آموزش
               </Link>
-              <Link
-                href="/sandbox"
-                className="text-neutral-300 hover:text-blue-400"
-              >
-                آزمایشگاه آزاد
-              </Link>
-              <Link
-                href="/compare"
-                className="text-neutral-300 hover:text-blue-400"
-              >
-                مقایسهٔ نظام‌ها
-              </Link>
             </div>
           </nav>
         </header>

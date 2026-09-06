@@ -1,22 +1,19 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import PairwiseMatrix from '@/components/sim/PairwiseMatrix';
-import RoundTimeline from '@/components/sim/RoundTimeline';
 import SeatPodium from '@/components/sim/SeatPodium';
 import TallyBarChart from '@/components/sim/TallyBarChart';
+import RoundTimeline from '@/components/sim/RoundTimeline';
+import PairwiseMatrix from '@/components/sim/PairwiseMatrix';
 import { compute, EngineError, SYSTEMS } from '@/lib/electoral';
 import type { SystemId } from '@/lib/electoral';
-import { formatFa, toFaDigits } from '@/lib/format/fa';
+import { formatFa } from '@/lib/format/fa';
 import {
   defaultValues,
   LEARN_SCENARIOS,
 } from '@/lib/learn/scenarios';
-import { useSandbox } from '@/lib/store/sandbox';
 
 export default function LearnSim({ system }: { system: SystemId }) {
-  const router = useRouter();
   const scenario = LEARN_SCENARIOS[system];
   const def = SYSTEMS[system];
   const [values, setValues] = useState<Record<string, number>>(() =>
@@ -56,11 +53,6 @@ export default function LearnSim({ system }: { system: SystemId }) {
     if (!step) return;
     setValues((prev) => ({ ...prev, ...step.values }));
     setActiveStep(index);
-  };
-
-  const openInSandbox = () => {
-    useSandbox.getState().loadInput(structuredClone(input));
-    router.push('/sandbox');
   };
 
   return (
@@ -206,20 +198,6 @@ export default function LearnSim({ system }: { system: SystemId }) {
           )}
         </>
       ) : null}
-
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4 dark:border-neutral-800">
-        <p className="text-xs text-neutral-500">
-          برای ساخت سناریوی دلخواه (تا {toFaDigits(6)} نامزد، بلوک‌های نامحدود و
-          همهٔ نظام‌ها):
-        </p>
-        <button
-          type="button"
-          onClick={openInSandbox}
-          className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow hover:bg-blue-700"
-        >
-          باز کردن در آزمایشگاه آزاد ←
-        </button>
-      </div>
     </div>
   );
 }

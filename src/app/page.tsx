@@ -82,9 +82,8 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-9 text-neutral-400">
               همان رأی‌ها، سه قاعدهٔ شمارش، سه نتیجهٔ متفاوت. این‌جا یاد
-              می‌گیرید قواعد رأی‌گیری چطور برنده می‌سازند، پارادوکس‌های مشهور
-              را با دست خودتان بازتولید می‌کنید و انتخابات دلخواهتان را
-              شبیه‌سازی می‌کنید.
+              می‌گیرید قواعد رأی‌گیری چطور برنده می‌سازند و پارادوکس‌های
+              مشهور ریاضی انتخابات را با دست خودتان بازتولید می‌کنید.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -93,18 +92,12 @@ export default function Home() {
               >
                 شروع یادگیری
               </Link>
-              <Link
-                href="/sandbox"
-                className="rounded-xl border border-neutral-700 bg-neutral-900 px-7 py-3.5 font-bold text-neutral-200 transition-colors hover:border-blue-500 hover:text-blue-400"
-              >
-                آزمایشگاه آزاد
-              </Link>
             </div>
             <dl className="mt-10 flex gap-8 text-sm">
               {[
                 ["۷", "نظام رأی‌گیری"],
-                ["۸", "سناریوی آماده"],
-                ["۲", "حالت ورود رأی"],
+                ["۱۹", "آزمایش گام‌به‌گام"],
+                ["۱۰۰٪", "رایگان و بدون ثبت‌نام"],
               ].map(([num, label]) => (
                 <div key={label}>
                   <dt className="sr-only">{label}</dt>
@@ -133,28 +126,8 @@ export default function Home() {
         </Reveal>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Reveal className="sm:col-span-2 lg:row-span-2" delay={60}>
-            <Link
-              href="/sandbox"
-              className="group flex h-full min-h-56 flex-col justify-between rounded-3xl border border-neutral-800 bg-gradient-to-bl from-blue-950/60 to-neutral-900 p-6 transition-colors hover:border-blue-500/60"
-            >
-              <div>
-                <span className="text-3xl">🧪</span>
-                <h3 className="mt-3 text-xl font-black">آزمایشگاه آزاد</h3>
-                <p className="mt-2 text-sm leading-7 text-neutral-400">
-                  نامزدها و گروه‌های رأی‌دهنده را خودتان بسازید — رأی به
-                  رأی یا بلوکی. همهٔ هفت نظام، چندبرنده، واگرد و اشتراک
-                  لینک؛ هر تغییری همان لحظه در نمودارها می‌نشیند.
-                </p>
-              </div>
-              <span className="mt-4 inline-block font-bold text-blue-400 group-hover:underline">
-                باز کردن آزمایشگاه ←
-              </span>
-            </Link>
-          </Reveal>
-
           {SYSTEM_TILES.map((tile, i) => (
-            <Reveal key={tile.href} delay={80 + i * 40}>
+            <Reveal key={tile.href} delay={60 + i * 40}>
               <Link
                 href={tile.href}
                 className="group flex h-full flex-col rounded-3xl border border-neutral-800 bg-neutral-900/70 p-5 transition-all hover:-translate-y-1 hover:border-neutral-600"
@@ -178,27 +151,7 @@ export default function Home() {
             </Reveal>
           ))}
 
-          <Reveal className="sm:col-span-2" delay={380}>
-            <Link
-              href="/compare"
-              className="group flex h-full min-h-32 flex-col justify-between rounded-3xl border border-neutral-800 bg-gradient-to-br from-violet-950/50 to-neutral-900 p-6 transition-colors hover:border-violet-500/60 sm:flex-row sm:items-center"
-            >
-              <div>
-                <span className="text-2xl">⚖️</span>
-                <h3 className="mt-2 text-lg font-black">
-                  یک انتخابات، هفت برنده؟
-                </h3>
-                <p className="mt-1 text-sm text-neutral-400">
-                  یک پروفایل رأی، همهٔ نظام‌ها، کنار هم — همین حالا.
-                </p>
-              </div>
-              <span className="mt-3 shrink-0 font-bold text-violet-400 group-hover:underline sm:mt-0">
-                مقایسه کن ←
-              </span>
-            </Link>
-          </Reveal>
-
-          <Reveal className="sm:col-span-2" delay={420}>
+          <Reveal className="sm:col-span-2" delay={340}>
             <div className="flex h-full min-h-32 flex-col justify-center rounded-3xl border border-dashed border-neutral-700 bg-neutral-900/40 p-6">
               <p className="text-sm leading-7 text-neutral-400">
                 <span className="font-black text-neutral-200">
