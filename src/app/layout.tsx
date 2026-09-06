@@ -31,7 +31,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <header className="border-b border-neutral-800/80 bg-neutral-950/80 text-neutral-100 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl items-center gap-8 px-4 py-3">
             <Link href="/" className="text-lg font-extrabold tracking-tight">
-              <span aria-hidden>🗳️</span>{" "}
               <span className="bg-gradient-to-l from-blue-400 to-violet-400 bg-clip-text text-transparent">
                 آزمایشگاه انتخابات
               </span>
@@ -44,13 +43,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 آموزش
               </Link>
             </div>
+            <div dir="ltr" className="me-auto text-sm text-neutral-500">
+              @TheEngaresh | @TheBootSector
+            </div>
           </nav>
         </header>
         <main id="main" className="flex-1">
           {children}
         </main>
-        <footer className="border-t border-neutral-800/80 bg-neutral-950 py-6 text-center text-sm text-neutral-500">
-          TheEngaresh | @TheBootSector@
+        <footer
+          dir="ltr"
+          className="border-t border-neutral-800/80 bg-neutral-950 py-6 text-center text-sm text-neutral-500"
+        >
+          @TheEngaresh | @TheBootSector
         </footer>
       </body>
     </html>
