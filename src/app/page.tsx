@@ -90,23 +90,9 @@ export default function Home() {
                 href="/learn"
                 className="rounded-xl bg-gradient-to-l from-blue-600 to-violet-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-blue-900/40 transition-transform hover:scale-[1.03]"
               >
-                شروع یادگیری
+                شروع
               </Link>
             </div>
-            <dl className="mt-10 flex gap-8 text-sm">
-              {[
-                ["۷", "نظام رأی‌گیری"],
-                ["۱۹", "آزمایش گام‌به‌گام"],
-              ].map(([num, label]) => (
-                <div key={label}>
-                  <dt className="sr-only">{label}</dt>
-                  <dd className="text-2xl font-black text-neutral-100">
-                    {num}
-                  </dd>
-                  <dd className="text-neutral-500">{label}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
 
           <div className="animate-fade-up" style={{ animationDelay: "150ms" }}>
