@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const vazir = Vazirmatn({
   variable: "--font-vazir",
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           @TheEngaresh | @TheBootSector
         </footer>
+        <Analytics />
       </body>
     </html>
   );
