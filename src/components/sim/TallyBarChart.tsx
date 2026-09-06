@@ -43,7 +43,12 @@ export default function TallyBarChart({
       </h3>
       <ResponsiveContainer width="100%" height={data.length * 44 + 30}>
         <BarChart data={data} layout="vertical" margin={{ top: 4, bottom: 4, left: 8, right: 44 }}>
-          <XAxis type="number" reversed hide />
+          <XAxis
+            type="number"
+            reversed
+            hide
+            domain={[0, (dataMax: number) => Math.ceil(dataMax * 1.25)]}
+          />
           <YAxis
             type="category"
             dataKey="name"
@@ -61,6 +66,7 @@ export default function TallyBarChart({
               dataKey="value"
               position="right"
               formatter={(v: unknown) => formatFa(Number(v))}
+              className="fill-neutral-700 dark:fill-neutral-300"
               style={{ fontSize: 12, fontWeight: 700 }}
             />
           </Bar>

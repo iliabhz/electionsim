@@ -10,7 +10,6 @@ import type {
   ElectionResult,
   RoundInfo,
   SeatResult,
-  TransferEdge,
   WeightedBallot,
 } from '../types';
 
@@ -19,37 +18,6 @@ interface IrvRun {
   rounds: RoundInfo[];
   exhaustedFinal: number;
   tieAtSeatBoundary: boolean;
-}
-
-function computeTransfers(
-  weighted: WeightedBallot[],
-  eliminated: string,
-  active: Set<string>,
-): TransferEdge[] {
-  const map = new Map<string, number>();
-  let exhausted = 0;
-  for (const { weight, ballot } of weighted) {
-    if (ballot.type !== 'ranked') continue;
-    const first = ballot.ranking.find((id) => active.has(id));
-    if (first !== eliminated) continue;
-    const next = ballot.ranking.find(
-      (id) => id !== eliminated && active.has(id),
-    );
-    if (next) {
-      map.set(next, (map.get(next) ?? 0) + weight);
-    } else {
-      exhausted += weight;
-    }
-  }
-  const edges: TransferEdge[] = [...map.entries()].map(([to, weight]) => ({
-    from: eliminated,
-    to,
-    weight,
-  }));
-  if (exhausted > 0) {
-    edges.push({ from: eliminated, to: null, weight: exhausted });
-  }
-  return edges;
 }
 
 function runIrv(
@@ -97,7 +65,6 @@ function runIrv(
     const last = sorted[sorted.length - 1];
     if (sorted[sorted.length - 2].value === last.value) tie = true;
     round.eliminated = last.candidateId;
-    round.transfers = computeTransfers(weighted, last.candidateId, active);
     rounds.push(round);
     active.delete(last.candidateId);
   }

@@ -138,9 +138,6 @@ describe('irv', () => {
     expect(result.kind).toBe('rounds');
     expect(result.winners[0].candidateId).toBe('b');
     expect(result.rounds?.[0].eliminated).toBe('c');
-    expect(result.rounds?.[0].transfers).toEqual([
-      { from: 'c', to: 'b', weight: 32 },
-    ]);
     expect(result.rounds?.[1].seatWinner).toBe('b');
 
     const cw = compute({ ...paradoxInput, system: 'condorcet' });

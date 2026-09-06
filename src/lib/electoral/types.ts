@@ -64,12 +64,6 @@ export type RoundNote =
   | 'no_condorcet_winner'
   | 'condorcet_winner';
 
-export interface TransferEdge {
-  from: string;
-  to: string | null;
-  weight: number;
-}
-
 export interface RoundInfo {
   index: number;
   seat?: number;
@@ -79,7 +73,6 @@ export interface RoundInfo {
   seatWinner?: string;
   exhausted?: number;
   note?: RoundNote;
-  transfers?: TransferEdge[];
 }
 
 interface ElectionResultBase {

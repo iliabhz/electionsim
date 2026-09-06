@@ -5,7 +5,6 @@ import PairwiseMatrix from './PairwiseMatrix';
 import RoundTimeline from './RoundTimeline';
 import SeatPodium from './SeatPodium';
 import TallyBarChart from './TallyBarChart';
-import TransferFlow from './TransferFlow';
 import type { PresetId } from '@/lib/store/sandbox';
 import { useSandbox, useSandboxResult } from '@/lib/store/sandbox';
 
@@ -51,12 +50,6 @@ export default function Simulator({
                 candidates={input.candidates}
                 winnerIds={result.winners.map((w) => w.candidateId)}
                 title="جدول نتایج"
-              />
-            )}
-            {result.kind === 'rounds' && (
-              <TransferFlow
-                rounds={result.rounds}
-                candidates={input.candidates}
               />
             )}
             {result.kind === 'rounds' && (
