@@ -1,0 +1,79 @@
+import Link from "next/link";
+import Simulator from "@/components/sim/Simulator";
+
+export const metadata = {
+  title: "روش کندورسه — آموزش",
+};
+
+export default function CondorcetPage() {
+  return (
+    <article className="mx-auto max-w-6xl px-4 py-12">
+      <nav className="mb-6 text-sm">
+        <Link href="/learn" className="text-blue-600 hover:underline">
+          ← بازگشت به فهرست نظام‌ها
+        </Link>
+      </nav>
+
+      <h1 className="text-3xl font-extrabold">روش کندورسه</h1>
+
+      <section className="mt-6 max-w-3xl space-y-4 leading-8 text-neutral-700 dark:text-neutral-300">
+        <h2 className="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+          چگونه کار می‌کند؟
+        </h2>
+        <p>
+          ایدهٔ مارکی دو کندورسه (قرن هجدهم) ساده است: برندهٔ واقعی کسی است که
+          در <strong>مقایسهٔ یک‌به‌یک</strong> با هر نامزد دیگر، اکثریت رأی
+          بیاورد. رأی‌ها رتبه‌ای هستند؛ برای هر جفت نامزد شمرده می‌شود چند
+          رأی‌دهنده اولی را به دومی ترجیح داده‌اند. با n نامزد باید
+          n(n−1)/2 مقایسه انجام شود — برای ۶ نامزد یعنی ۱۵ جفت.
+        </p>
+        <p>
+          اگر کسی همهٔ رقبا را شکست دهد، «برندهٔ کندورسه» است و — به خلاف
+          تقریباً همهٔ نظام‌های دیگر — این برنده مستقیماً از ترجیحات کل
+          جامعه درمی‌آید، نه از قواعد شمارش.
+        </p>
+
+        <h2 className="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+          مشکل بزرگ: پارادوکس کندورسه
+        </h2>
+        <p>
+          گاهی هیچ چنین برنده‌ای وجود ندارد! ترجیحات اجتماعی می‌تواند چرخه
+          بسازد: اکثریت آبی را به سبز ترجیح می‌دهد، اکثریت سبز را به نارنجی،
+          و... اکثریت نارنجی را به آبی. مثل سنگ‌کاغذقیچی: هر نامزد دیگری را
+          می‌برد و از دیگری می‌بازد. این «پارادوکس کندورسه» است و احتمال
+          وقوعش در انتخابات واقعی کم هم نیست.
+        </p>
+        <p>
+          وقتی چرخه هست، روش‌های کندورسه (مینیمکس، رتبه‌بندی زوجی،
+          شولتسه و...) باید از میان برندگانِ «مجموعهٔ اسمیت» — کوچک‌ترین
+          گروهی که همهٔ بیرونی‌ها را می‌برد — یکی را انتخاب کنند و این‌جاست
+          که انتخاب روش، نتیجه را عوض می‌کند.
+        </p>
+
+        <h2 className="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+          نکات عملی
+        </h2>
+        <ul className="list-disc space-y-1 ps-6">
+          <li>هزینهٔ محاسبه با نامزدهای بیشتر به‌سرعت رشد می‌کند (C(n,2) مقایسه)</li>
+          <li>برندهٔ کندورسه ممکن است با هر نظام دیگری حذف شود — ابزار عالی برای سنجش بقیهٔ نظام‌ها</li>
+          <li>چون در عمل رأی کامل رتبه‌ای لازم است، اجرای آن پیچیده‌تر از دو مرحله‌ای است</li>
+          <li>نسخهٔ چندبرندهٔ استانداردی ندارد؛ خانوادهٔ چندبرنده‌اش روش‌های CPO-STV و امثال آن است</li>
+        </ul>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-2xl font-bold">آزمایش کنید</h2>
+        <p className="mb-4 max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+          سناریوی آماده «پارادوکس کندورسه» را باز کنید: ماتریس دوبه‌دو را
+          ببینید، چرخه را دنبال کنید و مجموعهٔ اسمیت را بخوانید. حالا هر گروه
+          را کمی بزرگ‌تر کنید تا چرخه بشکند و برنده ظاهر شود — حس می‌کنید چقدر
+          نتیجه به ترکیب دقیق ترجیحات حساس است.
+        </p>
+        <Simulator
+          initialPreset="condorcet-cycle"
+          presets={["condorcet-cycle", "france-runoff", "irv-paradox", "default"]}
+        />
+      </section>
+    </article>
+  );
+}
