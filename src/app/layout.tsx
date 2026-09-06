@@ -46,9 +46,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </div>
           </nav>
         </header>
-        <main id="main" className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <footer className="border-t border-neutral-200 py-6 text-center text-sm text-neutral-500 dark:border-neutral-800">
-          آزمایشگاه تعاملی نظام‌های انتخاباتی — ساخته‌شده برای آموزش
+          TheEngaresh | @TheBootSector@
         </footer>
       </body>
     </html>
