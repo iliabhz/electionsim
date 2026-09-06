@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Simulator from "@/components/sim/Simulator";
+import LearnSim from "@/components/learn/LearnSim";
 
 export const metadata = {
   title: "روش کندورسه — آموزش",
@@ -64,15 +64,12 @@ export default function CondorcetPage() {
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold">آزمایش کنید</h2>
         <p className="mb-4 max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-          سناریوی آماده «پارادوکس کندورسه» را باز کنید: ماتریس دوبه‌دو را
-          ببینید، چرخه را دنبال کنید و مجموعهٔ اسمیت را بخوانید. حالا هر گروه
-          را کمی بزرگ‌تر کنید تا چرخه بشکند و برنده ظاهر شود — حس می‌کنید چقدر
-          نتیجه به ترکیب دقیق ترجیحات حساس است.
+          ماتریس و نمودار، چرخه را نشانتان می‌دهند. اسلایدر، بخشی از گروه سوم
+          را سبز-سرا می‌کند؛ با کمی جابه‌جایی، یک پارهٔ چرخه می‌شکند و برندهٔ
+          دوبه‌دو یک‌باره ظاهر می‌شود — حس کنید نتیجه چقدر به ترکیب دقیق
+          ترجیحات حساس است.
         </p>
-        <Simulator
-          initialPreset="condorcet-cycle"
-          presets={["condorcet-cycle", "france-runoff", "irv-paradox", "default"]}
-        />
+        <LearnSim system="condorcet" />
       </section>
     </article>
   );

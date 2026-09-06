@@ -28,19 +28,31 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           پرش به محتوای اصلی
         </a>
-        <header className="border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-900/80">
+        <header className="border-b border-neutral-800/80 bg-neutral-950/80 text-neutral-100 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl items-center gap-8 px-4 py-3">
-            <Link href="/" className="text-lg font-bold">
-              🗳️ آزمایشگاه انتخابات
+            <Link href="/" className="text-lg font-extrabold tracking-tight">
+              <span aria-hidden>🗳️</span>{" "}
+              <span className="bg-gradient-to-l from-blue-400 to-violet-400 bg-clip-text text-transparent">
+                آزمایشگاه انتخابات
+              </span>
             </Link>
             <div className="flex gap-5 text-sm font-medium">
-              <Link href="/learn" className="hover:text-blue-600">
+              <Link
+                href="/learn"
+                className="text-neutral-300 hover:text-blue-400"
+              >
                 آموزش
               </Link>
-              <Link href="/sandbox" className="hover:text-blue-600">
+              <Link
+                href="/sandbox"
+                className="text-neutral-300 hover:text-blue-400"
+              >
                 آزمایشگاه آزاد
               </Link>
-              <Link href="/compare" className="hover:text-blue-600">
+              <Link
+                href="/compare"
+                className="text-neutral-300 hover:text-blue-400"
+              >
                 مقایسهٔ نظام‌ها
               </Link>
             </div>
@@ -49,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="main" className="flex-1">
           {children}
         </main>
-        <footer className="border-t border-neutral-200 py-6 text-center text-sm text-neutral-500 dark:border-neutral-800">
+        <footer className="border-t border-neutral-800/80 bg-neutral-950 py-6 text-center text-sm text-neutral-500">
           TheEngaresh | @TheBootSector@
         </footer>
       </body>

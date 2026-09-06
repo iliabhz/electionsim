@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Simulator from "@/components/sim/Simulator";
+import LearnSim from "@/components/learn/LearnSim";
 
 export const metadata = {
   title: "رأی امتیازی — آموزش",
@@ -66,13 +66,11 @@ export default function ScorePage() {
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold">آزمایش کنید</h2>
         <p className="mb-4 max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-          امتیازهای هر گروه را با اسلایدرها تنظیم کنید و جمع امتیازها را زنده
-          ببینید. رأی صادق و رأی استراتژیک (همه ۵/۰) را مقایسه کنید تا فروپاشی
-          به اکثریت نسبی را با چشم ببینید.
+          سه اسلایدر دارید: امتیاز طرفداران آبی به هر سه نامزد. امتیاز میانی
+          (مثلاً ۳ به سبز) را صفر کنید تا ببینید حذفِ «شدت نظر» چطور برنده را
+          از گزینهٔ اجماعی به گزینهٔ قطبی جابه‌جا می‌کند.
         </p>
-        <Simulator
-          presets={["default", "approval-bullet", "spoiler"]}
-        />
+        <LearnSim system="score" />
       </section>
     </article>
   );

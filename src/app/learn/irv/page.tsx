@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Simulator from "@/components/sim/Simulator";
+import LearnSim from "@/components/learn/LearnSim";
 
 export const metadata = {
   title: "انتقال‌پذیر یک‌مرحله‌ای (IRV) — آموزش",
@@ -81,15 +81,12 @@ export default function IrvPage() {
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold">آزمایش کنید</h2>
         <p className="mb-4 max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-          سناریوی آماده پارادوکس را بازتولید می‌کند: مراحل حذف و انتقال رأی را
-          دنبال کنید، بعد به «کندورسه» سوئیچ کنید تا ببینید چه کسی در
-          مقایسهٔ دوبه‌دو واقعاً برنده است. نسخهٔ چندبرنده را با ۲ صندلی هم
-          امتحان کنید.
+          سناریوی پایه همان پارادوکس است: نارنجی اول حذف می‌شود اما برندهٔ
+          دوبه‌دوست. یک اسلایدر دارید: تعداد طرفداران سبز. با کم‌وزیاد کردن آن
+          ببینید ترتیب حذف چطور عوض می‌شود و برندهٔ دوبه‌دو سرانجام کی
+          برندهٔ واقعی می‌شود.
         </p>
-        <Simulator
-          initialPreset="irv-paradox"
-          presets={["default", "irv-paradox", "condorcet-cycle"]}
-        />
+        <LearnSim system="irv" />
       </section>
     </article>
   );

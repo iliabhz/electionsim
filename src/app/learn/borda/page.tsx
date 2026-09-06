@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Simulator from "@/components/sim/Simulator";
+import LearnSim from "@/components/learn/LearnSim";
 
 export const metadata = {
   title: "شمارش بوردا — آموزش",
@@ -65,15 +65,11 @@ export default function BordaPage() {
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold">آزمایش کنید</h2>
         <p className="mb-4 max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-          سناریوی «دفن رقیب» را باز کنید: رتبه‌بندی گروه سبز را بین حالت صادق
-          (سبز &gt; آبی &gt; نارنجی) و تاکتیکی (سبز &gt; نارنجی &gt; آبی)
-          عوض کنید و جهش امتیازها را در نمودار ببینید. با دو صندلی هم امتحان
-          کنید — نسخهٔ بلوکی، انگیزهٔ دفن را دوچندان می‌کند.
+          یک کلید دارید: رأی سبزی‌ها صادق باشد یا آبی را «دفن» کنند. کلید را
+          بزنید و جهش امتیازها را در نمودار ببینید — بدون اینکه حتی یک رأی
+          واقعی اضافه یا کم شود.
         </p>
-        <Simulator
-          initialPreset="borda-burying"
-          presets={["borda-burying", "default", "spoiler"]}
-        />
+        <LearnSim system="borda" />
       </section>
     </article>
   );

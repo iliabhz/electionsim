@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Simulator from "@/components/sim/Simulator";
+import LearnSim from "@/components/learn/LearnSim";
 
 export const metadata = {
   title: "نظام دو مرحله‌ای — آموزش",
@@ -72,15 +72,12 @@ export default function RunoffPage() {
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold">آزمایش کنید</h2>
         <p className="mb-4 max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-          سناریوی آماده «الگوی فرانسه ۲۰۰۲» را اجرا کنید و مراحل را دنبال
-          کنید. بعد همین سناریو را با «کندورسه» اجرا کنید تا ببینید چه کسی در
-          مقایسه‌های دوبه‌دو واقعاً برنده است. تعداد رأی‌های گروه میانه‌رو را
-          کم‌وزیاد کنید تا ببینید کی از مرحلهٔ اول جان به در می‌برد.
+          فقط یک اهرم دارید: تعداد طرفداران میانه‌رو (نارنجی). کم‌وزیاد کنید
+          تا ببینید دقیقاً کجا از مرحلهٔ اول حذف می‌شود و کجا با ورود به دور
+          دوم، قهرمان می‌شود. عدد بالای کارت هم هر بار یادآوری می‌کند که
+          برندهٔ دوبه‌دو کیست.
         </p>
-        <Simulator
-          initialPreset="france-runoff"
-          presets={["default", "france-runoff", "condorcet-cycle"]}
-        />
+        <LearnSim system="runoff" />
       </section>
     </article>
   );

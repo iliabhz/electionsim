@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Simulator from "@/components/sim/Simulator";
+import LearnSim from "@/components/learn/LearnSim";
 
 export const metadata = {
   title: "رأی تأییدی — آموزش",
@@ -66,14 +66,11 @@ export default function ApprovalPage() {
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold">آزمایش کنید</h2>
         <p className="mb-4 max-w-2xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-          با سناریوی «رأی گلوله‌ای» شروع کنید و تأییدها را مرحله‌به‌مرحله
-          صادقانه‌تر کنید تا سقوط به سمت اکثریت نسبی و برگشت به سمت اجماع را
-          تجربه کنید. تعداد صندلی را هم تغییر دهید تا نسخهٔ بلوکی را ببینید.
+          یک کلید سه‌حالته دارید: همه صادق رأی بدهند، فقط آبی‌ها گلوله‌ای، یا
+          همه گلوله‌ای. تغییر حالت‌ها را دنبال کنید تا ببینید چطور رفتار
+          رأی‌دهندگان — و نه ترجیحاتشان — برنده را تعیین می‌کند.
         </p>
-        <Simulator
-          initialPreset="approval-bullet"
-          presets={["approval-bullet", "default", "spoiler"]}
-        />
+        <LearnSim system="approval" />
       </section>
     </article>
   );

@@ -1,74 +1,216 @@
 import Link from "next/link";
+import HeroVerdict from "@/components/home/HeroVerdict";
+import Reveal from "@/components/home/Reveal";
 
-const FEATURES = [
+const SYSTEM_TILES: Array<{
+  href: string;
+  name: string;
+  hook: string;
+  color: string;
+}> = [
   {
-    icon: "📚",
-    title: "آموزش گام‌به‌گام",
-    text: "هفت نظام رأی‌گیری با زبان ساده، مثال‌های واقعی و نقاط ضعف هرکدام",
-    href: "/learn",
-    cta: "شروع یادگیری",
-  },
-  {
-    icon: "🧪",
-    title: "آزمایش تعاملی",
-    text: "با اسلایدرها و نمودارها ببینید چطور تغییر رأی‌ها نتیجه را وارونه می‌کند",
     href: "/learn/plurality",
-    cta: "اثر شکافنده را ببینید",
+    name: "اکثریت نسبی",
+    hook: "برنده با ۳۵٪ رأی — و رأی حریفِ شکافته",
+    color: "#3b82f6",
   },
   {
-    icon: "🗳️",
-    title: "آزمایشگاه آزاد",
-    text: "انتخابات خودتان را طراحی کنید و هم‌زمان در همهٔ نظام‌ها مقایسه کنید",
-    href: "/sandbox",
-    cta: "رفتن به شبیه‌ساز",
+    href: "/learn/runoff",
+    name: "دو مرحله‌ای",
+    hook: "میانه‌رو حذف شد؛ افراطی‌ها به دور دوم رسیدند",
+    color: "#06b6d4",
+  },
+  {
+    href: "/learn/irv",
+    name: "انتقال‌پذیر (IRV)",
+    hook: "برندهٔ واقعی، اولِ همه حذف شد",
+    color: "#8b5cf6",
+  },
+  {
+    href: "/learn/condorcet",
+    name: "کندورسه",
+    hook: "سنگ، کاغذ، قیچی — روی صندلی رأی",
+    color: "#f59e0b",
+  },
+  {
+    href: "/learn/borda",
+    name: "شمارش بوردا",
+    hook: "رأی دوم‌تان هم می‌شمارد",
+    color: "#ec4899",
+  },
+  {
+    href: "/learn/approval",
+    name: "رأی تأییدی",
+    hook: "هرکس را قبول دارید، تأیید کنید",
+    color: "#10b981",
+  },
+  {
+    href: "/learn/score",
+    name: "رأی امتیازی",
+    hook: "از ۰ تا ۵ نمره بدهید؛ شدت نظر مهم است",
+    color: "#f97316",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16">
-      <section className="text-center">
-        <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-snug sm:text-5xl">
-          آیا برندهٔ انتخابات، محبوب‌ترین گزینه است؟
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-neutral-600 dark:text-neutral-400">
-          بستگی دارد به نظام رأی‌گیری! در این آزمایشگاه، نظام‌های انتخاباتی را
-          یاد می‌گیرید، پارادوکس‌های مشهور را با دست خودتان بازتولید می‌کنید و
-          انتخابات دلخواهتان را شبیه‌سازی می‌کنید.
-        </p>
-        <div className="mt-8 flex justify-center gap-3">
-          <Link
-            href="/learn"
-            className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white shadow hover:bg-blue-700"
-          >
-            شروع کنیم
-          </Link>
-          <Link
-            href="/sandbox"
-            className="rounded-xl border border-neutral-300 bg-white px-6 py-3 font-bold hover:border-blue-500 hover:text-blue-600 dark:border-neutral-700 dark:bg-neutral-900"
-          >
-            آزمایشگاه آزاد
-          </Link>
+    <div className="bg-neutral-950 text-neutral-100">
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:44px_44px]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 start-1/4 h-96 w-96 rounded-full bg-blue-600/25 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 end-0 h-80 w-80 rounded-full bg-violet-600/20 blur-3xl"
+        />
+
+        <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 lg:grid-cols-2 lg:py-28">
+          <div className="animate-fade-up">
+            <span className="inline-block rounded-full border border-neutral-700 bg-neutral-900 px-4 py-1.5 text-xs font-bold text-neutral-300">
+              آزمایشگاه تعاملی نظام‌های رأی‌گیری
+            </span>
+            <h1 className="mt-6 text-5xl font-black leading-[1.15] tracking-tight sm:text-6xl">
+              یک انتخابات،{" "}
+              <span className="bg-gradient-to-l from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
+                سه برنده
+              </span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-9 text-neutral-400">
+              همان رأی‌ها، سه قاعدهٔ شمارش، سه نتیجهٔ متفاوت. این‌جا یاد
+              می‌گیرید قواعد رأی‌گیری چطور برنده می‌سازند، پارادوکس‌های مشهور
+              را با دست خودتان بازتولید می‌کنید و انتخابات دلخواهتان را
+              شبیه‌سازی می‌کنید.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href="/learn"
+                className="rounded-xl bg-gradient-to-l from-blue-600 to-violet-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-blue-900/40 transition-transform hover:scale-[1.03]"
+              >
+                شروع یادگیری
+              </Link>
+              <Link
+                href="/sandbox"
+                className="rounded-xl border border-neutral-700 bg-neutral-900 px-7 py-3.5 font-bold text-neutral-200 transition-colors hover:border-blue-500 hover:text-blue-400"
+              >
+                آزمایشگاه آزاد
+              </Link>
+            </div>
+            <dl className="mt-10 flex gap-8 text-sm">
+              {[
+                ["۷", "نظام رأی‌گیری"],
+                ["۸", "سناریوی آماده"],
+                ["۲", "حالت ورود رأی"],
+              ].map(([num, label]) => (
+                <div key={label}>
+                  <dt className="sr-only">{label}</dt>
+                  <dd className="text-2xl font-black text-neutral-100">
+                    {num}
+                  </dd>
+                  <dd className="text-neutral-500">{label}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="animate-fade-up" style={{ animationDelay: "150ms" }}>
+            <HeroVerdict />
+          </div>
         </div>
       </section>
 
-      <section className="mt-16 grid gap-6 md:grid-cols-3">
-        {FEATURES.map((f) => (
-          <Link
-            key={f.title}
-            href={f.href}
-            className="group rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900"
-          >
-            <span className="text-3xl">{f.icon}</span>
-            <h2 className="mt-3 text-lg font-bold">{f.title}</h2>
-            <p className="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-              {f.text}
-            </p>
-            <span className="mt-3 inline-block text-sm font-bold text-blue-600 group-hover:underline">
-              {f.cta} ←
-            </span>
-          </Link>
-        ))}
+      <section className="mx-auto max-w-6xl px-4 pb-24">
+        <Reveal>
+          <h2 className="text-2xl font-black">از کجا شروع کنیم؟</h2>
+          <p className="mt-2 text-sm leading-7 text-neutral-400">
+            هر نظام یک صفحهٔ آموزشی با مینی‌شبیه‌ساز زنده دارد؛ فقط چند اهرم
+            جابه‌جا کنید تا ایدهٔ اصلی را ببینید.
+          </p>
+        </Reveal>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal className="sm:col-span-2 lg:row-span-2" delay={60}>
+            <Link
+              href="/sandbox"
+              className="group flex h-full min-h-56 flex-col justify-between rounded-3xl border border-neutral-800 bg-gradient-to-bl from-blue-950/60 to-neutral-900 p-6 transition-colors hover:border-blue-500/60"
+            >
+              <div>
+                <span className="text-3xl">🧪</span>
+                <h3 className="mt-3 text-xl font-black">آزمایشگاه آزاد</h3>
+                <p className="mt-2 text-sm leading-7 text-neutral-400">
+                  نامزدها و گروه‌های رأی‌دهنده را خودتان بسازید — رأی به
+                  رأی یا بلوکی. همهٔ هفت نظام، چندبرنده، واگرد و اشتراک
+                  لینک؛ هر تغییری همان لحظه در نمودارها می‌نشیند.
+                </p>
+              </div>
+              <span className="mt-4 inline-block font-bold text-blue-400 group-hover:underline">
+                باز کردن آزمایشگاه ←
+              </span>
+            </Link>
+          </Reveal>
+
+          {SYSTEM_TILES.map((tile, i) => (
+            <Reveal key={tile.href} delay={80 + i * 40}>
+              <Link
+                href={tile.href}
+                className="group flex h-full flex-col rounded-3xl border border-neutral-800 bg-neutral-900/70 p-5 transition-all hover:-translate-y-1 hover:border-neutral-600"
+                style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}
+              >
+                <span
+                  className="mb-3 inline-block h-2.5 w-10 rounded-full"
+                  style={{ background: tile.color }}
+                />
+                <h3 className="font-black">{tile.name}</h3>
+                <p className="mt-2 flex-1 text-sm leading-7 text-neutral-400">
+                  {tile.hook}
+                </p>
+                <span
+                  className="mt-3 text-sm font-bold opacity-0 transition-opacity group-hover:opacity-100"
+                  style={{ color: tile.color }}
+                >
+                  امتحانش کن ←
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+
+          <Reveal className="sm:col-span-2" delay={380}>
+            <Link
+              href="/compare"
+              className="group flex h-full min-h-32 flex-col justify-between rounded-3xl border border-neutral-800 bg-gradient-to-br from-violet-950/50 to-neutral-900 p-6 transition-colors hover:border-violet-500/60 sm:flex-row sm:items-center"
+            >
+              <div>
+                <span className="text-2xl">⚖️</span>
+                <h3 className="mt-2 text-lg font-black">
+                  یک انتخابات، هفت برنده؟
+                </h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  یک پروفایل رأی، همهٔ نظام‌ها، کنار هم — همین حالا.
+                </p>
+              </div>
+              <span className="mt-3 shrink-0 font-bold text-violet-400 group-hover:underline sm:mt-0">
+                مقایسه کن ←
+              </span>
+            </Link>
+          </Reveal>
+
+          <Reveal className="sm:col-span-2" delay={420}>
+            <div className="flex h-full min-h-32 flex-col justify-center rounded-3xl border border-dashed border-neutral-700 bg-neutral-900/40 p-6">
+              <p className="text-sm leading-7 text-neutral-400">
+                <span className="font-black text-neutral-200">
+                  هیچ نظامی کامل نیست.
+                </span>{" "}
+                قضیهٔ امکان‌ناپذیری ارو ثابت می‌کند هر قاعدهٔ رأی‌گیری جای
+                چیزی را با چیزی دیگر معامله می‌کند — در هر صفحهٔ آموزشی،
+                معاملهٔ آن نظام را دقیق نشان می‌دهیم.
+              </p>
+            </div>
+          </Reveal>
+        </div>
       </section>
     </div>
   );
